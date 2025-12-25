@@ -1,0 +1,111 @@
+<div class="page-wrapper">
+  <app-header></app-header>
+
+  <div class="container page-content">
+    <div class="search-filter-box mb-3">
+      <div class="filter-header p-3">
+        <h3 class="fw-bold m-0"><i class="bi bi-funnel-fill me-2"></i>問卷篩選總覽</h3>
+      </div>
+
+      <div class="filter-body p-4">
+        <div class="row align-items-center mb-3">
+          <label for="title" class="col-auto mb-0">問卷名稱</label>
+          <div class="col">
+            <input type="text" id="title" class="form-control custom-input" placeholder="請輸入關鍵字"
+              [(ngModel)]="searchDatas.keyWords" (input)="searchData($event)" name="keyWords">
+          </div>
+        </div>
+
+        <div class="row align-items-center">
+          <label class="col-auto mb-0">填寫期間</label>
+          <div class="col">
+            <div class="input-group">
+              <input type="text" class="form-control custom-input" mwlFlatpickr [(ngModel)]="searchDatas.startDate"
+                [locale]="zh" placeholder="起始日期" (input)="searchData($event)" name="startDate">
+              <span class="input-group-text date-separator">到</span>
+              <input type="text" class="form-control custom-input" mwlFlatpickr [(ngModel)]="searchDatas.endDate"
+                [locale]="zh" [minDate]="searchDatas.startDate" placeholder="結束日期" (input)="searchData($event)"
+                name="endDate">
+              <button type="button" class="btn btn-danger" (click)="initData(this.formsAllData)">
+                <i class="bi bi-arrow-counterclockwise"></i> 重置
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 下列是指一個輸入框可以範圍選擇日期 -->
+    <!-- <input type="text" class="form-control bg-white" mwlFlatpickr mode="range" [altInput]="true" altFormat="Y-m-d"
+            [locale]="zh" placeholder="請選擇日期區間" [(ngModel)]="selectedDateRange" /> -->
+    <div class="data-list-wrapper shadow-sm rounded-4 overflow-hidden">
+      <table class="table table-hover lh-lg text-center mb-0 custom-list-table">
+        <thead>
+          <tr>
+            <th scope="col">序號</th>
+            <th scope="col">名稱</th>
+            <th scope="col">狀態</th>
+            <th scope="col">開始時間</th>
+            <th scope="col">結束時間</th>
+            <th scope="col"><button class="btn btn-primary" routerLink="/fill-form">前往</button></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(form of showForms;track $index) {
+          <tr>
+            <td scope="row">{{form.formID}}</td>
+            <td class="">{{form.formTitle}}</td>
+            <td>
+              <span class="status-badge" [ngClass]="form.formIsOpen ? 'status-open' : 'status-closed'">
+                {{form.formIsOpen ? '可填寫' : '不可填寫'}}
+              </span>
+            </td>
+            <td>{{form.formSDate}}</td>
+            <td>{{form.formEDate}}</td>
+            <td>前往</td>
+          </tr>
+          }
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="6">
+              <div class="d-flex justify-content-end align-items-center gap-2">
+                <span>每頁顯示</span>
+                <select class="form-select w-auto page-size-select" (change)="changeSize($event)">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                </select>
+                <span>筆</span>
+                <nav aria-label="Page navigation custom-pagination">
+                  <ul class="pagination justify-content-end mb-0 custom-pagination">
+                    <li class="page-item">
+                      <button class="page-link" [ngClass]="{'disabled':currentPage==1}"
+                        (click)="changePageUpDown(false)">
+                        上一頁
+                      </button>
+                    </li>
+                    @for(page of [].constructor(totalPage);track $index){
+                    <li class="page-item" [ngClass]="{ 'active' : currentPage === $index + 1 }">
+                      <button class="page-link" (click)="changePageCss($index)">
+                        {{$index + 1}}
+                      </button>
+                    </li>
+                    }
+                    <li class="page-item">
+                      <button class="page-link" [ngClass]="{'disabled':currentPage==totalPage}"
+                        (click)="changePageUpDown(true)">
+                        下一頁
+                      </button>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

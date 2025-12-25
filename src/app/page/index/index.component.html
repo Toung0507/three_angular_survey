@@ -1,1 +1,84 @@
-<p>index works!</p>
+<div class="page-wrapper">
+  <app-header></app-header>
+  <div class="hero-section text-center p-5 mb-5 rounded-4 ">
+    <h1 class="display-5 mb-3 fw-bold">活動回饋專區</h1>
+    <p class=" text-black fs-5 fw-bold mb-4">歡迎提供您對近期活動的寶貴意見，您的回饋是我們進步的動力。</p>
+    <div class="d-flex justify-content-center gap-3 fw-bold">
+      <div class="stat-item px-4">
+        <span class="fs-2 d-block ">120+</span>
+        <span class="text-muted">累計活動</span>
+      </div>
+      <div class="border-start"></div>
+      <div class="stat-item px-4">
+        <span class="fs-2 d-block">5,000+</span>
+        <span class="text-muted">回饋人數</span>
+      </div>
+    </div>
+  </div>
+  <div class="container page-content mt-4">
+    <section class="itemContainer exhibition mb-5">
+      <div class="categoryItemTitle p-3 d-flex justify-content-between">
+        <h3 class="fw-bold m-0">展覽活動</h3>
+        <button class="btn p-0 m-0 view-more-link">
+          查看更多 <i class="bi bi-caret-right"></i>
+        </button>
+      </div>
+      <div class="categoryItemContent p-3 d-flex flex-wrap">
+        @for (item of exhibitionData.slice(0,4); track $index) {
+        <div class="cardActivty rounded-3 px-3 pt-5 mb-3">
+          <label class="cardTag fw-bold" [class.status-open]="item.formIsOpen">
+            {{item.formIsOpen ? '可填寫' : '已結束'}}
+          </label>
+          <p class="fs-5 itemTitle">{{item.formTitle}}</p>
+          <p class="small text-muted">期間：{{item.formSDate}} ~ {{item.formEDate}}</p>
+          <p class="text-truncate-2">{{item.formDescription}}</p>
+        </div>
+        }
+      </div>
+    </section>
+
+    <section class="itemContainer exhibition seminar mb-5">
+      <div class="categoryItemTitle p-3 d-flex justify-content-between">
+        <h3 class="fw-bold m-0">研討會</h3>
+        <button class="btn p-0 m-0 view-more-link">
+          查看更多 <i class="bi bi-caret-right"></i>
+        </button>
+      </div>
+      <div class="categoryItemContent p-3 d-flex flex-wrap">
+        @for (item of seminarData.slice(0,4); track $index) {
+        <div class="cardActivty rounded-3 px-3 pt-5 mb-3">
+          <label class="cardTag fw-bold" [class.status-open]=" item.formIsOpen">
+            {{item.formIsOpen ? '可填寫' : '已結束'}}
+          </label>
+          <p class="fs-5 itemTitle">{{item.formTitle}}</p>
+          <p class="small text-muted">期間：{{item.formSDate}} ~ {{item.formEDate}}</p>
+          <p class="text-truncate-2">{{item.formDescription}}</p>
+        </div>
+        }
+      </div>
+    </section>
+
+    <section class="itemContainer exhibition meeting">
+      <div class="categoryItemTitle p-3 d-flex justify-content-between">
+        <h3 class="fw-bold m-0">見面會</h3>
+        <button class="btn p-0 m-0 view-more-link">
+          查看更多 <i class="bi bi-caret-right"></i>
+        </button>
+      </div>
+      <div class="categoryItemContent p-3 d-flex flex-wrap">
+        @for (item of meetingData.slice(0,4); track $index) {
+        <div class="cardActivty rounded-3 px-3 pt-5 mb-3">
+          <label class="cardTag fw-bold" [class.status-open]=" item.formIsOpen">
+            {{item.formIsOpen ? '可填寫' : '已結束'}}
+          </label>
+          <p class="fs-5 itemTitle">{{item.formTitle}}</p>
+          <p class="small text-muted">期間：{{item.formSDate}} ~ {{item.formEDate}}</p>
+          <p class="text-truncate-2">{{item.formDescription}}</p>
+        </div>
+        }
+      </div>
+    </section>
+  </div>
+
+  <app-footer></app-footer>
+</div>

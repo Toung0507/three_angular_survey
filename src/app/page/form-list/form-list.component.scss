@@ -1,0 +1,114 @@
+/* 問卷清單頁專用樣式 */
+.search-filter-box {
+  --list-theme: #ff8a00;
+  --list-bg-light: #fef1e1;
+
+  .filter-header {
+    background: var(--list-bg-light);
+    border: 3px solid var(--list-theme);
+    border-radius: 20px 20px 0px 0px;
+
+    h3 {
+      color: var(--list-theme);
+    }
+  }
+
+  .filter-body {
+    background: #fff;
+    border: 3px solid var(--list-theme);
+    border-top: 3px solid var(--list-theme); // 厚實的重疊感
+    border-radius: 0px 0px 20px 20px;
+  }
+
+  .custom-input {
+    border: 2px solid #dee2e6;
+
+    &:focus {
+      border-color: var(--list-theme);
+      box-shadow: 0 0 0 0.25rem rgba(255, 138, 0, 0.1);
+    }
+  }
+
+  .date-separator {
+    border: 0;
+    background: #fff;
+  }
+}
+
+/* 資料表格區塊樣式 */
+.data-list-wrapper {
+  border: 2px solid #eee;
+
+  .custom-list-table {
+    th {
+      font-size: 18px;
+      border: none;
+      background-color: #ff8a00 !important;
+      color: white !important;
+      font-weight: bold;
+    }
+
+    tbody tr:hover {
+      background-color: #fffaf5;
+    }
+  }
+
+  .status-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 50px;
+    // font-size: 0.85rem;
+    font-weight: bold;
+
+    &.status-open {
+      background-color: #e6f4ea;
+      color: #1e7e34;
+    }
+
+    &.status-closed {
+      background-color: #f8f9fa;
+      color: #6c757d;
+      border: 1px solid #dee2e6;
+    }
+  }
+
+  .btn-go-form {
+    border: 2px solid #ff8a00;
+    color: #ff8a00;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: #ff8a00;
+      color: white;
+    }
+  }
+}
+
+/* 分頁組件樣式 */
+.custom-pagination {
+  .page-item.active .page-link {
+    background-color: #ff8a00;
+    border-color: #ff8a00;
+    color: white;
+    box-shadow: none;
+  }
+
+  .page-link {
+    color: #ff8a00;
+    font-weight: bold;
+    box-shadow: none;
+
+    &:hover {
+      background-color: #fff1e1;
+      box-shadow: none;
+    }
+  }
+}
+
+.page-size-select {
+  border: 2px solid #dee2e6;
+
+  &:focus {
+    border-color: #ff8a00;
+    box-shadow: none;
+  }
+}

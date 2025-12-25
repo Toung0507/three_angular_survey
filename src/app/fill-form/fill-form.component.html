@@ -1,0 +1,67 @@
+<div class="page-wrapper">
+  <app-header></app-header>
+
+  <div class="container page-content mt-4 mb-5">
+    <section class="survey-intro-box mb-4">
+      <div class="intro-header p-3">
+        <h2 class="fw-bold m-0 text-white">✨ 活動回饋問卷</h2>
+      </div>
+      <div class="intro-body p-4 bg-white">
+        <h3 class="fw-bold text-orange mb-2">j</h3>
+        <p class="text-muted mb-0">感謝您的參與！請花 2 分鐘填寫此問卷，您的意見對我們非常重要。</p>
+        <hr class="my-3">
+        <div class="d-flex gap-4 text-muted small">
+          <span><i class="bi bi-calendar-event me-1"></i> 期間：s ~
+            s</span>
+          <span><i class="bi bi-person-fill me-1"></i> 已填寫人數：1,204</span>
+        </div>
+      </div>
+    </section>
+
+    <form class="survey-form-container p-4 p-md-5 rounded-4 shadow-sm bg-white">
+
+      <div class="form-section-title mb-4">
+        <h4 class="fw-bold"><i class="bi bi-person-circle me-2"></i>基本資料</h4>
+      </div>
+
+      <div class="row g-3 mb-5">
+        <div class="col-md-6">
+          <label class="form-label fw-bold">姓名</label>
+          <input type="text" class="form-control survey-input" placeholder="請輸入您的真實姓名">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-bold">電子信箱</label>
+          <input type="email" class="form-control survey-input" placeholder="example@email.com">
+        </div>
+      </div>
+
+      <div class="form-section-title mb-4">
+        <h4 class="fw-bold"><i class="bi bi-chat-left-text-fill me-2"></i>活動評價</h4>
+      </div>
+
+      <div class="question-item mb-4 p-3 rounded-3">
+        <p class="fw-bold mb-3">1. 請問您對於本次活動內容的滿意度？</p>
+        <div class="d-flex flex-wrap gap-3">
+          @for(option of ['非常滿意', '滿意', '普通', '不滿意']; track $index) {
+          <div class="form-check custom-radio">
+            <input class="form-check-input" type="radio" name="satisfaction" [id]="'opt'+$index">
+            <label class="form-check-label" [for]="'opt'+$index">{{option}}</label>
+          </div>
+          }
+        </div>
+      </div>
+
+      <div class="question-item mb-4 p-3 rounded-3">
+        <p class="fw-bold mb-3">2. 您最喜歡活動中的哪一個環節？</p>
+        <textarea class="form-control survey-input" rows="4" placeholder="請分享您的想法..."></textarea>
+      </div>
+
+      <div class="form-actions d-flex justify-content-center gap-3 mt-5">
+        <button type="button" class="btn btn-cancel px-5 py-2 rounded-pill fw-bold">取消並返回</button>
+        <button type="submit" class="btn btn-submit px-5 py-2 rounded-pill fw-bold text-white">確認提交問卷</button>
+      </div>
+    </form>
+  </div>
+
+  <app-footer></app-footer>
+</div>
