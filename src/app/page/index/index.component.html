@@ -19,15 +19,17 @@
     <section class="itemContainer exhibition mb-5">
       <div class="categoryItemTitle p-3 d-flex justify-content-between">
         <h3 class="fw-bold m-0">展覽活動</h3>
-        <button class="btn p-0 m-0 view-more-link">
+        <button class="btn p-0 m-0 view-more-link" routerLink="/form-list">
           查看更多 <i class="bi bi-caret-right"></i>
         </button>
       </div>
       <div class="categoryItemContent p-3 d-flex flex-wrap">
         @for (item of exhibitionData.slice(0,4); track $index) {
-        <div class="cardActivty rounded-3 px-3 pt-5 mb-3">
+        <div class="cardActivty rounded-3 px-3 pt-5 mb-3"
+          [routerLink]="item.formIsOpen ? ['/fill-form', item.formID] : null"
+          [style.cursor]="item.formIsOpen ? 'pointer' : 'default'">
           <label class="cardTag fw-bold" [class.status-open]="item.formIsOpen">
-            {{item.formIsOpen ? '可填寫' : '已結束'}}
+            {{item.formIsOpen ? '去填寫' : '已結束'}}
           </label>
           <p class="fs-5 itemTitle">{{item.formTitle}}</p>
           <p class="small text-muted">期間：{{item.formSDate}} ~ {{item.formEDate}}</p>
@@ -40,15 +42,17 @@
     <section class="itemContainer exhibition seminar mb-5">
       <div class="categoryItemTitle p-3 d-flex justify-content-between">
         <h3 class="fw-bold m-0">研討會</h3>
-        <button class="btn p-0 m-0 view-more-link">
+        <button class="btn p-0 m-0 view-more-link" routerLink="/form-list">
           查看更多 <i class="bi bi-caret-right"></i>
         </button>
       </div>
       <div class="categoryItemContent p-3 d-flex flex-wrap">
         @for (item of seminarData.slice(0,4); track $index) {
-        <div class="cardActivty rounded-3 px-3 pt-5 mb-3">
-          <label class="cardTag fw-bold" [class.status-open]=" item.formIsOpen">
-            {{item.formIsOpen ? '可填寫' : '已結束'}}
+        <div class="cardActivty rounded-3 px-3 pt-5 mb-3"
+          [routerLink]="item.formIsOpen ? ['/fill-form', item.formID] : null"
+          [style.cursor]="item.formIsOpen ? 'pointer' : 'default'">
+          <label class="cardTag fw-bold" [class.status-open]="item.formIsOpen">
+            {{item.formIsOpen ? '去填寫' : '已結束'}}
           </label>
           <p class="fs-5 itemTitle">{{item.formTitle}}</p>
           <p class="small text-muted">期間：{{item.formSDate}} ~ {{item.formEDate}}</p>
@@ -61,15 +65,17 @@
     <section class="itemContainer exhibition meeting">
       <div class="categoryItemTitle p-3 d-flex justify-content-between">
         <h3 class="fw-bold m-0">見面會</h3>
-        <button class="btn p-0 m-0 view-more-link">
+        <button class="btn p-0 m-0 view-more-link" routerLink="/form-list">
           查看更多 <i class="bi bi-caret-right"></i>
         </button>
       </div>
       <div class="categoryItemContent p-3 d-flex flex-wrap">
         @for (item of meetingData.slice(0,4); track $index) {
-        <div class="cardActivty rounded-3 px-3 pt-5 mb-3">
-          <label class="cardTag fw-bold" [class.status-open]=" item.formIsOpen">
-            {{item.formIsOpen ? '可填寫' : '已結束'}}
+        <div class="cardActivty rounded-3 px-3 pt-5 mb-3"
+          [routerLink]="item.formIsOpen ? ['/fill-form', item.formID] : null"
+          [style.cursor]="item.formIsOpen ? 'pointer' : 'default'">
+          <label class="cardTag fw-bold" [class.status-open]="item.formIsOpen">
+            {{item.formIsOpen ? '去填寫' : '已結束'}}
           </label>
           <p class="fs-5 itemTitle">{{item.formTitle}}</p>
           <p class="small text-muted">期間：{{item.formSDate}} ~ {{item.formEDate}}</p>

@@ -1,14 +1,24 @@
 import { Injectable } from '@angular/core';
 
+// 基本資料
+export interface userBasicInfo {
+  name: string;
+  age?: number;
+  tel: string;
+  email: string;
+}
+
+// 問題欄位
 export interface questionField {
   questionID: number,
   questionDescription: string,
   questionType: string,
+  questionHolder?: string,
   questionOptions?: string[]
   questionRequired: boolean,
-  questionResponse?: string[]
 }
 
+// 表單欄位
 export interface FormField {
   formID: number,
   formTitle: string,
@@ -21,12 +31,23 @@ export interface FormField {
   formType?: string
 }
 
+// 使用者回答
+export interface userResponse {
+  responseID: number;
+  formID: number;
+  userInfo: userBasicInfo,
+  answers: { [questionID: number]: any },
+  sumbitDate?: string
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
 
 
 export class FormsService {
+  // 初始表單值
   forms: FormField[] = [
     {
       formID: 1,
@@ -34,8 +55,8 @@ export class FormsService {
       formDescription: '請分享您對本次科技展覽的感受與建議。',
       formFields: [
         { questionID: 1, questionDescription: '展覽整體規劃如何？', questionType: 'single-choice', questionOptions: ['非常好', '普通', '需要改善'], questionRequired: true },
-        { questionID: 2, questionDescription: '最喜歡的展區是？', questionType: 'multiple-choice', questionOptions: ['AI 展區', 'VR 展區', '智慧家電展區'], questionRequired: false },
-        { questionID: 3, questionDescription: '有什麼建議？', questionType: 'text', questionRequired: false }
+        { questionID: 2, questionDescription: '最喜歡的展區是？', questionType: 'multiple-choice', questionOptions: ['AI 展區', 'VR 展區', '智慧家電展區'], questionRequired: true },
+        { questionID: 3, questionDescription: '有什麼建議？', questionType: 'text', questionHolder: "請填入建議", questionRequired: true }
       ],
       formIsOpen: true,
       formSDate: '2025-12-01',
@@ -274,6 +295,12 @@ export class FormsService {
     }
 
   ];
+
+  // 暫存的資料
+  tempResponse?: userResponse;
+
+  // 儲存全部的資料
+  private allResponse: userResponse[] = [];
 
   constructor() { }
 }

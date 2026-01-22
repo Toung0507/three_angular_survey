@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from "../../layout/header/header.component";
 import { FooterComponent } from "../../layout/footer/footer.component";
 import { FormsService } from '../../@services/forms.service';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-index',
-  imports: [HeaderComponent, FooterComponent],
+  imports: [HeaderComponent, FooterComponent, RouterLink],
   templateUrl: './index.component.html',
   styleUrl: './index.component.scss'
 })

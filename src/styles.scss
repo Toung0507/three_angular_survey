@@ -4,6 +4,8 @@
 html,
 body {
   height: 100%;
+  scroll-behavior: auto !important;
+  /* 強制關閉平滑捲動，回歸瞬間跳轉，確保葉面切換不會有滑動效果 */
 }
 
 body {

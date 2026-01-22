@@ -46,7 +46,7 @@
             <th scope="col">狀態</th>
             <th scope="col">開始時間</th>
             <th scope="col">結束時間</th>
-            <th scope="col"><button class="btn btn-primary" routerLink="/fill-form">前往</button></th>
+            <th scope="col">最終結果</th>
           </tr>
         </thead>
         <tbody>
@@ -55,13 +55,20 @@
             <td scope="row">{{form.formID}}</td>
             <td class="">{{form.formTitle}}</td>
             <td>
-              <span class="status-badge" [ngClass]="form.formIsOpen ? 'status-open' : 'status-closed'">
-                {{form.formIsOpen ? '可填寫' : '不可填寫'}}
+              @if(form.formIsOpen) {
+              <span class="status-badge status-open" [routerLink]="['/fill-form', form.formID]"
+                style="cursor: pointer;">
+                去填寫
               </span>
+              } @else {
+              <span class="status-badge status-closed">
+                不可填寫
+              </span>
+              }
             </td>
             <td>{{form.formSDate}}</td>
             <td>{{form.formEDate}}</td>
-            <td>前往</td>
+            <td>{{form.formIsOpen ? '觀看結果' : '尚未開放'}}</td>
           </tr>
           }
         </tbody>
