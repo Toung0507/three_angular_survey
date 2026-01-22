@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import "flatpickr/dist/flatpickr.css";
+
+html,
+body {
+  height: 100%;
+  scroll-behavior: auto !important;
+  /* 強制關閉平滑捲動，回歸瞬間跳轉，確保葉面切換不會有滑動效果 */
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #faf7f2; // 暖米色大背景
+}
+
+.page-content {
+  flex: 1; // 把 footer 推到底部
+}
